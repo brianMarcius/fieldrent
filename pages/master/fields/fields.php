@@ -70,7 +70,7 @@
                                                     </div>
                                                     <div class="col-md-8 form-group">
                                                         <input type="text" id="field_name" class="form-control form-control-sm"
-                                                            name="field_name" placeholder="Field Name" onchange="checkLength(this, 'Field Name', 20)">
+                                                            name="field_name" placeholder="Field Name" onchange="checkLength(this, 'Field Name', 20); checkSpecialCharacter(this)">
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>Price</label>
@@ -153,6 +153,16 @@
             length = length-1;
             $(th).val(text.substring(0,length));
         }
+    }
+
+    function checkSpecialCharacter(th){
+        var text = $(th).val();
+        var regex = new RegExp("^[a-zA-Z0-9.,/ $@()]+$");
+        if (!regex.test(text)) {
+            alert("This input cannot be contain special characters");  
+            $(th).val('');  
+        }
+
     }
 
     function modalShow(mtd){
