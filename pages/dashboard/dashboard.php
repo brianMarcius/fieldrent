@@ -1,8 +1,9 @@
 <?php 
+$date = date('Y-m-d');
 $count_customer = mysqli_fetch_array(mysqli_query($connect,"SELECT count(customer_code) customer from customers where deleted_at is null"));
-$count_reservation_today = mysqli_fetch_array(mysqli_query($connect,"SELECT count(no_booking) no_booking from booking_fields where booking_date = sysdate() and deleted_at is null"));
-$total_payment_today = mysqli_fetch_array(mysqli_query($connect,"SELECT ifnull(sum(payment),0) payment from payments where payment_date = sysdate() and deleted_at is null"));
-$outstanding_payment_today = mysqli_fetch_array(mysqli_query($connect,"SELECT ifnull(sum(a.total-(SELECT ifnull(sum(payment),0) from payments where no_booking=a.no_booking and deleted_at is null)),0) total from booking_fields a where a.booking_date = sysdate() and a.deleted_at is null"));
+$count_reservation_today = mysqli_fetch_array(mysqli_query($connect,"SELECT count(no_booking) no_booking from booking_fields where booking_date = '$date' and deleted_at is null"));
+$total_payment_today = mysqli_fetch_array(mysqli_query($connect,"SELECT ifnull(sum(payment),0) payment from payments where payment_date = '$date' and deleted_at is null"));
+$outstanding_payment_today = mysqli_fetch_array(mysqli_query($connect,"SELECT ifnull(sum(a.total-(SELECT ifnull(sum(payment),0) from payments where no_booking=a.no_booking and deleted_at is null)),0) total from booking_fields a where a.booking_date = '$date' and a.deleted_at is null"));
 
 
 ?>
