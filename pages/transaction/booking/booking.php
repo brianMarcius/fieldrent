@@ -518,7 +518,7 @@
 
     function getReservationById(id,view){
         $.ajax({
-            url : "app/transaction/booking.php?f_name=get_reservation_by_id",
+            url : "app/transaction/Booking.php?f_name=get_reservation_by_id",
             type : "GET",
             data : {
                 data : id,
@@ -615,7 +615,7 @@
 
     function getSelectedField(id){
         $.ajax({
-            url : "app/transaction/booking.php?f_name=get_selected_field",
+            url : "app/transaction/Booking.php?f_name=get_selected_field",
             type : "GET",
             data :  {
                 id_field : id

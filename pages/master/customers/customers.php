@@ -135,7 +135,7 @@
 
     function getCustomers(){
         $.ajax({
-            url : "app/master/customers.php?f_name=get_all_customers",
+            url : "app/master/Customers.php?f_name=get_all_customers",
             type : "GET",
             success : function(result){
                 $("#tbody-customer").html(result);
@@ -175,7 +175,7 @@
 
     function getcustomerbyId(id){
         $.ajax({
-            url : "app/master/customers.php?f_name=get_customer_by_id",
+            url : "app/master/Customers.php?f_name=get_customer_by_id",
             type : "GET",
             data : {
                 data : id,
@@ -196,7 +196,7 @@
 
     function saveCustomer(){
         $.ajax({
-            url : "app/master/customers.php?f_name=store",
+            url : "app/master/Customers.php?f_name=store",
             type : "POST",
             data :  $("#form-customer").serialize(),
             dataType : "JSON",
@@ -209,7 +209,7 @@
 
     function updateCustomer(id){
         $.ajax({
-            url : "app/master/customers.php?f_name=update",
+            url : "app/master/Customers.php?f_name=update",
             type : "POST",
             data :  $("#form-customer").serialize(),
             dataType : "JSON",
@@ -224,7 +224,7 @@
         var confirm = window.confirm("Are you sure want to delete this?");
         if (confirm) {
             $.ajax({
-            url : "app/master/customers.php?f_name=delete",
+            url : "app/master/Customers.php?f_name=delete",
             type : "GET",
             data :  {
                 id_customer : id
