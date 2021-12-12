@@ -220,14 +220,14 @@
                                                                 <label>End</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="time" id="end" class="form-control form-control-sm"
+                                                                <input type="time" id="end" readonly="readonly" class="form-control form-control-sm"
                                                                     name="end">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Total Price</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="number" id="total" class="form-control form-control-sm"
+                                                                <input type="number" id="total" readonly="readonly" class="form-control form-control-sm"
                                                                     name="total">
                                                             </div>
                                                             <div class="col-md-4">
@@ -323,6 +323,25 @@
     $('.calendar').pignoseCalendar({
         select: onSelectHandler
     }); 
+
+    $("#dp").change(function(){
+        var total = parseFloat($("#total").val());
+        var dp = parseFloat($(this).val());
+            if (dp > total) {
+                alert("Down Payment can't be higher than total");
+                $(this).val(total);
+            }
+    })
+
+    $("#paid").change(function(){
+        var tobepaid = parseFloat($("#tobepaid").val());
+        var paid = parseFloat($("#paid").val()); 
+        // alert(paid);
+        if (paid > tobepaid) {
+                alert("Payment can't be higher than the rest");
+                $(this).val(tobepaid);
+            }
+    })
 
     function onSelectHandler(date, context) {
             /**

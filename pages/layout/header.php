@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="assets/css/app.css">
         <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">  
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
+            <script src="../../helpers/helpers.js"></script>  
             <script type="text/javascript" src="assets/vendors/pg-calendar/js/pignose.calendar.full.min.js"></script>
 
         

@@ -70,14 +70,14 @@
                                                     </div>
                                                     <div class="col-md-8 form-group">
                                                         <input type="text" id="field_name" class="form-control form-control-sm"
-                                                            name="field_name" placeholder="Field Name">
+                                                            name="field_name" placeholder="Field Name" onchange="checkLength(this, 'Field Name', 20)">
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>Price</label>
                                                     </div>
                                                     <div class="col-md-8 form-group">
                                                         <input type="number" id="price" class="form-control form-control-sm"
-                                                            name="price" placeholder="0">
+                                                            name="price" placeholder="0" onchange="checkLength(this, 'Price', 11)">
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>Notes</label>
@@ -89,13 +89,13 @@
                                                             <label for="floatingTextarea">Note</label>
                                                         </div>                                                    
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <!-- <div class="col-md-4">
                                                         <label>Additional Picture</label>
                                                     </div>
                                                     <div class="col-md-8 form-group">
                                                         <input class="form-control form-control-sm" id="formFileSm" name="picture" type="file">
 
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                         </form>
@@ -145,6 +145,15 @@
     $("#update-field").click(function(){
         updateField();
     })
+
+    function checkLength(th, name, length){
+        var text = $(th).val();
+        if (text.length > length) {
+            alert(name + " should be less than "+length+" characters");
+            length = length-1;
+            $(th).val(text.substring(0,length));
+        }
+    }
 
     function modalShow(mtd){
         var title;

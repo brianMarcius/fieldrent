@@ -73,28 +73,28 @@
                                                     </div>
                                                     <div class="col-md-8 form-group">
                                                         <input type="text" id="customer_name" class="form-control form-control-sm"
-                                                            name="customer_name" placeholder="customer Name">
+                                                            name="customer_name" placeholder="customer Name" onchange="checkLength(this, 'Customer Name', 50); checkSpecialCharacter(this)">
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>PIC</label>
                                                     </div>
                                                     <div class="col-md-8 form-group">
                                                         <input type="text" id="pic" class="form-control form-control-sm"
-                                                            name="pic" placeholder="pic name">
+                                                            name="pic" placeholder="pic name" onchange="checkLength(this, 'PIC name', 50); checkSpecialCharacter(this)">
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>Email</label>
                                                     </div>
                                                     <div class="col-md-8 form-group">
                                                         <input type="email" id="email" class="form-control form-control-sm"
-                                                            name="email" placeholder="john@mail.com">
+                                                            name="email" placeholder="john@mail.com" onChange="checkLength(this, 'Email', 30); checkEmail(this)">
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>Phone</label>
                                                     </div>
                                                     <div class="col-md-8 form-group">
                                                         <input type="text" id="phone" class="form-control form-control-sm"
-                                                            name="phone" placeholder="08290xxxxx">
+                                                            name="phone" placeholder="08290xxxxx" onChange="checkLength(this, 'Phone Number', 15); checkPhoneNumber(this)">
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>Address</label>
@@ -148,12 +148,63 @@
     })
 
     $("#save-customer").click(function(){
-        saveCustomer();
+        if (checkValue()) {
+            saveCustomer();
+        }
     })
 
     $("#update-customer").click(function(){
-        updateCustomer();
+        if (checkValue()) {
+            updateCustomer();
+        }
     })
+
+    // $("#customer_name,#pic").change(function(){
+    //     var text = $(this).val();
+    //     if (text.length > 50) {
+    //         alert("This input should be less than 50 characters");
+    //         $(this).val(text.substring(0,49));
+    //     }
+    // })
+
+    function checkLength(th, name, length){
+        var text = $(th).val();
+        if (text.length > length) {
+            alert(name + " should be less than "+length+" characters");
+            length = length-1;
+            $(th).val(text.substring(0,length));
+        }
+    }
+
+    function checkSpecialCharacter(th){
+        var text = $(th).val();
+        var regex = new RegExp("^[a-zA-Z0-9.,/ $@()]+$");
+        if (!regex.test(text)) {
+            alert("This input cannot be contain special characters");  
+            $(th).val('');  
+        }
+
+    }
+
+    function checkEmail(th){
+        email = $(th).val();
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        value = regex.test(email);
+        if (!value) {
+            alert("Email value is not valid!");
+            $(th).val('');
+        }
+    }
+
+    function checkPhoneNumber(th){
+        phoneNumber = $(th).val();
+        var regex = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+        value = regex.test(phoneNumber);
+        if (!value) {
+            alert("Phone Number value is not valid!");
+            $(th).val('');
+        }
+    }
 
     function modalShow(mtd){
         var title;
@@ -237,6 +288,25 @@
         }
     }
 
+    function checkValue(){
+        data = $('#form-customer').serialize();
+        valid = true;
+        array = data.split('&');
+        for (let index = 0; index < array.length; index++) {
+            input = array[index].split('=');
+            name = input[0];
+            value = input[1];
+                
+            if (value == '') {
+                alert("Please fill all this input");
+                valid = false;
+                break;
+            }
+        }
+
+        return valid
+
+    }
 
 
 </script>
