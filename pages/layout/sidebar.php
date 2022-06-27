@@ -71,6 +71,12 @@
                             </ul>
                         </li> -->
 
+                        <li class="sidebar-item">
+                            <a href="app/auth/logout.php" class='sidebar-link'>
+                                <i class="bi bi-door-closed-fill"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
