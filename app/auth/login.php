@@ -31,6 +31,8 @@ if($stmt->num_rows == 1)  //To check if the row exists
                 $base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
                 $jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
                 
+                $_SESSION['token'] = $jwt;
+                
                 $data = [
                     "code" => 200,
                     "message" => "Login success",

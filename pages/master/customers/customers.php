@@ -129,6 +129,7 @@
             </div>
 
 <script>
+    const token = "<?=$_SESSION['token'];?>";
     $(function(){
         getCustomers();
     })
@@ -230,6 +231,7 @@
             type : "GET",
             data : {
                 data : id,
+                token : token
             },
             dataType : "JSON",
             success : function(result){
