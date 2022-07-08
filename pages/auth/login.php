@@ -246,7 +246,7 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
         <a href="#">
           <legend id="forgot-pass">Forgot password?</legend>
         </a>
-        <input id="submit-btn" type="button" onclick="login()" value="SUBMIT"/>
+        <button id="submit-btn" type="button" onclick="login()">SUBMIT</button>
         <!-- <a href="#" id="signup">Don't have account yet?</a> -->
       </form>
     </div>
