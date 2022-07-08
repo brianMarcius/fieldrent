@@ -12,25 +12,21 @@ $stmt->store_result();
 if($stmt->num_rows == 1)  //To check if the row exists
     {
         while($stmt->fetch()) //fetching the contents of the row
-
-          {
+            {
         
-            $_SESSION['logged'] = 1;
-           $_SESSION['id_user'] = $id_user;
-           $_SESSION['username'] = $username;
-           $_SESSION['image'] = $image;
-           $_SESSION['email'] = $email;
-           $_SESSION['level'] = $level;
-        
-        //    $data = [
-        //      "code" => 200,
-        //      "message" => "Login success"
-        //    ];
+                $_SESSION['logged'] = 1;
+                $_SESSION['id_user'] = $id_user;
+                $_SESSION['username'] = $username;
+                $_SESSION['image'] = $image;
+                $_SESSION['email'] = $email;
+                $_SESSION['level'] = $level;
+                
+                $data = [
+                    "code" => 200,
+                    "message" => "Login success"
+                ];
            
            }
-
-
-
     }
     else {
         $data = [
