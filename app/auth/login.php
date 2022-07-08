@@ -20,12 +20,21 @@ if($stmt->num_rows == 1)  //To check if the row exists
                 $_SESSION['image'] = $image;
                 $_SESSION['email'] = $email;
                 $_SESSION['level'] = $level;
-                $token = base64_encode($_SESSION);
+
+                $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
+                $payload = json_encode($id_user);
+
+                $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
+                $base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
+
+                $signature = hash_hmac('sha256', $base64UrlHeader . "." . $base64UrlPayload, 'ssttinirahasia!', true);
+                $base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
+                $jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
                 
                 $data = [
                     "code" => 200,
                     "message" => "Login success",
-                    "token" => $token
+                    "token" => $jwt
                 ];
            
            }

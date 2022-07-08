@@ -32,8 +32,11 @@ function get_all_customers(){
 
 function get_customer_by_id(){
     require_once "../../config/connection.php";
+    require_once "../../helpers/helpers.php";
+    
     $token = $_GET['token'];
-    if ($token == base64_encode($_SESSION)) {
+    $valid = validateToken($token);
+    if ($valid) {
         $id = $_GET['data'];
         $sql = "SELECT * from customers where id_customer='$id' and deleted_at is null";
         $query = mysqli_query($connect,$sql);
