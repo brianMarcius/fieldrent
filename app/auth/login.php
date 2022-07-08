@@ -20,18 +20,21 @@ if($stmt->num_rows == 1)  //To check if the row exists
                 $_SESSION['image'] = $image;
                 $_SESSION['email'] = $email;
                 $_SESSION['level'] = $level;
+                $token = base64_encode($_SESSION);
                 
                 $data = [
                     "code" => 200,
-                    "message" => "Login success"
+                    "message" => "Login success",
+                    "token" => $token
                 ];
            
            }
+        
     }
     else {
         $data = [
              "code" => 500,
-             "message" => "Invalid email or password"
+             "message" => "Invalid email or password",
        ];
     }
     $stmt->close();

@@ -32,10 +32,19 @@ function get_all_customers(){
 
 function get_customer_by_id(){
     require_once "../../config/connection.php";
-    $id = $_GET['data'];
-    $sql = "SELECT * from customers where id_customer='$id' and deleted_at is null";
-    $query = mysqli_query($connect,$sql);
-    $data = mysqli_fetch_assoc($query);
+    $token = $_GET['token'];
+    if ($token == base64_encode($_SESSION)) {
+        $id = $_GET['data'];
+        $sql = "SELECT * from customers where id_customer='$id' and deleted_at is null";
+        $query = mysqli_query($connect,$sql);
+        $data = mysqli_fetch_assoc($query);    
+    }else{
+        $data = [
+            "code" => "500",
+            "message" => "Invalid Token",
+        ];
+    }
+    
     echo json_encode($data);
 }
 

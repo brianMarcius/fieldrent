@@ -294,7 +294,7 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
             },
             dataType : "JSON",
             success : function(response){
-              if (response.code=200) {
+              if (response.code==200) {
                   window.location.href = "../../index.php"                
               }else{
                   alert(response.message);
