@@ -233,7 +233,7 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
 <h1>Login to Fieldrent</h1>
   <div id="card" class="card">
     <div id="card-content">
-      <form method="post" class="form">
+      <!-- <form method="post" class="form"> -->
         <label for="user-email" style="padding-top:13px;color:rgba(84,58,183,1);text-align:left">
             &nbsp;Email
           </label>
@@ -248,7 +248,7 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
         </a>
         <input id="submit-btn" type="button" onclick="login()" value="SUBMIT"/>
         <!-- <a href="#" id="signup">Don't have account yet?</a> -->
-      </form>
+      <!-- </form> -->
     </div>
   </div>
 </div>
